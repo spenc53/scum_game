@@ -9,8 +9,8 @@ class GameManager():
 
     def getInstance():
         if GameManager.instance == None:
-            instance = GameManager()
-        return instance
+            GameManager.instance = GameManager()
+        return GameManager.instance
 
     def __init__(self):
         self.games: "dict[str, Game]" = {}

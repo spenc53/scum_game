@@ -1,4 +1,5 @@
 import io, {Socket} from 'socket.io-client';
+import BaseCommand from './commands/BaseCommand';
 
 export default class SocketCommuicator {
     private static instance: SocketCommuicator;
@@ -26,6 +27,10 @@ export default class SocketCommuicator {
 
     public test() {
         this.socket.emit("command", {"test": "command"});
+    }
+
+    public sendCommand(command: BaseCommand) {
+        this.socket.emit("command", JSON.stringify(command))
     }
 
     private setupSocket() {
